@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Só pra você</title>
+    <title>Sérgio & Isabella</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #e91e63;
-            /* Novo fundo: Gradiente suave de Azul para Roxo/Rosa */
             --bg-gradient: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
             --text-color: #333;
             --card-bg: rgba(255, 255, 255, 0.9);
@@ -34,11 +33,10 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Dica: Troque essa URL por uma foto de capa de vocês se quiser */
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1920&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Efeito parallax */
+            background-attachment: fixed;
             color: white;
             padding: 20px;
         }
@@ -54,22 +52,11 @@
         .subtitle { font-size: 1.4rem; font-weight: 300; text-shadow: 1px 1px 3px rgba(0,0,0,0.6); }
 
         /* Contador */
-        .counter-section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .timer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
+        .counter-section { padding: 60px 20px; text-align: center; }
+        .timer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
         .time-box {
             background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px); /* Efeito de vidro */
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: var(--primary-color);
             padding: 20px;
@@ -78,109 +65,55 @@
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
             transition: transform 0.3s;
         }
-        
-        .time-box:hover { transform: translateY(-5px); }
         .time-box span { display: block; font-size: 2rem; font-weight: bold; color: #333; }
         .time-box label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* CARROSSEL INFINITO */
-        .gallery-section {
-            padding: 60px 0; /* Sem padding lateral para o carrossel ir de ponta a ponta */
-            text-align: center;
-            overflow: hidden; /* Esconde o que sai da tela */
-        }
-
-        .section-title {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            font-family: 'Sacramento', cursive;
-        }
-
-        .carousel-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .carousel-track {
-            display: flex;
-            width: calc(300px * 14); /* Largura baseada no numero de fotos duplicadas para o efeito */
-            animation: scroll 40s linear infinite; /* Animação infinita */
-        }
-
-        .carousel-slide {
-            width: 300px;
-            height: 450px;
-            padding: 10px;
-            flex-shrink: 0;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
-
-        .carousel-slide img:hover { transform: scale(1.05); }
-
-        /* Animação do Carrossel */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-300px * 6)); /* Ajustar conforme número de fotos originais */ }
-        }
+        /* Galeria */
+        .gallery-section { padding: 60px 0; text-align: center; overflow: hidden; }
+        .section-title { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 40px; font-family: 'Sacramento', cursive; }
+        .carousel-container { width: 100%; overflow: hidden; position: relative; }
+        .carousel-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
+        .carousel-slide { width: 300px; height: 450px; padding: 10px; flex-shrink: 0; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* Declaração */
-        .message-section {
-            padding: 60px 20px 120px 20px; /* Padding extra embaixo por causa do Spotify */
-            text-align: center;
-        }
+        .message-section { padding: 60px 20px 120px 20px; text-align: center; }
+        .message-card { background: var(--card-bg); max-width: 800px; margin: 0 auto; padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        .message-card {
-            background: var(--card-bg);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-        }
+        /* Spotify */
+        .spotify-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); background: #000; overflow: hidden; width: 300px; height: 80px; transition: height 0.3s ease; }
+        .spotify-container:hover { height: 380px; }
 
-        /* Spotify Flutuante */
-        .spotify-container {
+        /* AREA DE UPLOAD (Só aparece para admin) */
+        #admin-panel {
+            display: none; /* Escondido por padrão */
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            background: #000;
-            overflow: hidden;
-            width: 300px; /* Tamanho compacto */
-            height: 80px; /* Altura compacta */
-            transition: height 0.3s ease;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 2000;
         }
-        
-        .spotify-container:hover {
-            height: 380px; /* Expande ao passar o mouse */
+        #upload-btn {
+            background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;
         }
+        #upload-status { font-size: 0.8rem; margin-top: 5px; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .carousel-slide { width: 250px; height: 350px; }
-            .spotify-container { width: 80%; left: 50%; transform: translateX(-50%); bottom: 10px; }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { h1 { font-size: 3rem; } .carousel-slide { width: 250px; height: 350px; } }
     </style>
 </head>
 <body>
+
+    <div id="admin-panel">
+        <h4>Adicionar Nova Foto 📸</h4>
+        <input type="file" id="photo-input" accept="image/*">
+        <button id="upload-btn" onclick="uploadPhoto()">Enviar Foto</button>
+        <p id="upload-status">Aguardando...</p>
+    </div>
 
     <header>
         <h1>Sérgio & Isabella</h1>
@@ -188,7 +121,7 @@
     </header>
 
     <section class="counter-section">
-        <h2 class="section-title">Faz tempo...</h2>
+        <h2 class="section-title">Nossa História em Números</h2>
         <div class="timer" id="timer"></div>
     </section>
 
@@ -210,41 +143,38 @@
 
     <div class="spotify-container">
         <iframe style="border-radius:12px" 
-            src="https://open.spotify.com/embed/playlist/4vULI9tge0O3erhK8mGjNK?utm_source=generator"
-            width="100%" 
-            height="100%" 
-            frameBorder="0" 
-            allowfullscreen="" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy">
+            src="https://open.spotify.com/embed/playlist/4vULI9tge0O3erhK8mGjNK?utm_source=generator" 
+            width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
         </iframe>
     </div>
 
-    <script>
-        // --- 1. CONFIGURAÇÃO DA DATA ---
-        const startDate = new Date(2024, 7, 6); // Ano, Mês (Janeiro é 0, Agosto é 7), Dia
+    <script type="module">
+        // Importar as funções necessárias do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        // --- 2. CONFIGURAÇÃO DAS FOTOS (CARROSSEL) ---
-        // Adicione aqui os nomes EXATOS dos arquivos das fotos que estão na pasta
-        // Você pode colocar quantas quiser, basta separar por vírgula e aspas
-        const minhasFotos = [
-            'WhatsApp Image 2026-02-14 at 18.42.27.jpeg',
-            'WhatsApp Image 2026-02-14 at 18.42.28.jpeg',
-            'WhatsApp Image 2026-02-14 at 18.42.29.jpeg',
-            'WhatsApp Image 2026-02-14 at 18.42.30.jpeg',
-            'WhatsApp Image 2026-02-14 at 18.42.31.jpeg',
-            'WhatsApp Image 2026-02-14 at 19.04.37.jpeg',
-            'WhatsApp Image 2026-02-14 at 19.04.38.jpeg',
-            'WhatsApp Image 2026-02-14 at 19.04.39.jpeg',
-            'WhatsApp Image 2026-02-14 at 19.04.40.jpeg',
-            'WhatsApp Image 2026-02-14 at 19.04.41.jpeg',
-            'WhatsApp Image 2026-02-14 at 19.04.42.jpeg',
-            'WhatsApp Image 2026-02-14 at 19.04.43.jpeg',
-            'WhatsApp Image 2026-02-14 at 19.04.44.jpeg',
-            // Adicione mais fotos aqui, ex: 'foto_nova.jpg',
-        ];
+        // -------------------------------------------------------------
+        // ⚠️ SUBSTITUA COM SUAS CHAVES DO PASSO 1 (FASE 1) ⚠️
+        // -------------------------------------------------------------
+         // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBEF9-Mi-V-TKa-ITUoZLDXsHGtYmZeIcY",
+            authDomain: "presente-sergio-isabella.firebaseapp.com",
+            projectId: "presente-sergio-isabella",
+            storageBucket: "presente-sergio-isabella.firebasestorage.app",
+            messagingSenderId: "169034950596",
+            appId: "1:169034950596:web:55ba95095d04dd70c1e691"
+        };
 
-        // Função do Timer
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // --- 1. LÓGICA DO TIMER (Não muda) ---
+        const startDate = new Date(2024, 7, 6); // 6 de Agosto de 2024
         function updateTimer() {
             const now = new Date();
             const diff = now - startDate;
@@ -252,7 +182,6 @@
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((diff / (1000 * 60)) % 60);
             const seconds = Math.floor((diff / 1000) % 60);
-
             document.getElementById('timer').innerHTML = `
                 <div class="time-box"><span>${days}</span><label>Dias</label></div>
                 <div class="time-box"><span>${hours}</span><label>Horas</label></div>
@@ -263,21 +192,78 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // Função para Montar o Carrossel Infinito
-        const track = document.getElementById('carousel-track');
+        // --- 2. CARREGAR FOTOS DO FIREBASE ---
+        async function loadPhotos() {
+            const track = document.getElementById('carousel-track');
+            track.innerHTML = ''; // Limpa antes de carregar
+            
+            // Pega as fotos da coleção "fotos"
+            const q = query(collection(db, "fotos"), orderBy("dataUpload", "desc"));
+            const querySnapshot = await getDocs(q);
+            
+            let photoUrls = [];
+            querySnapshot.forEach((doc) => {
+                photoUrls.push(doc.data().url);
+            });
+
+            // Se não tiver fotos ainda, usa um placeholder
+            if (photoUrls.length === 0) {
+                photoUrls = ['https://via.placeholder.com/300x450?text=Sua+Foto+Aqui'];
+            }
+
+            // Duplica para efeito infinito
+            const displayPhotos = [...photoUrls, ...photoUrls, ...photoUrls];
+
+            displayPhotos.forEach(url => {
+                const div = document.createElement('div');
+                div.className = 'carousel-slide';
+                div.innerHTML = `<img src="${url}" alt="Momento">`;
+                track.appendChild(div);
+            });
+        }
+        loadPhotos(); // Chama ao abrir a pagina
+
+        // --- 3. SISTEMA DE UPLOAD (ADMIN) ---
         
-        // Precisamos duplicar as fotos para dar o efeito de infinito visualmente
-        // Se tiver poucas fotos, duplicamos mais vezes para preencher a tela
-        let fotosParaExibir = [...minhasFotos, ...minhasFotos, ...minhasFotos]; 
+        // Verifica se tem ?admin=true no link
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('admin') === 'true') {
+            document.getElementById('admin-panel').style.display = 'block';
+        }
 
-        fotosParaExibir.forEach(foto => {
-            const div = document.createElement('div');
-            div.className = 'carousel-slide';
-            // Importante: As imagens devem estar na MESMA PASTA do arquivo HTML
-            div.innerHTML = `<img src="${foto}" alt="Nosso Momento">`;
-            track.appendChild(div);
-        });
+        // Função Global de Upload
+        window.uploadPhoto = async function() {
+            const fileInput = document.getElementById('photo-input');
+            const file = fileInput.files[0];
+            const status = document.getElementById('upload-status');
 
+            if (!file) {
+                alert('Selecione uma foto!');
+                return;
+            }
+
+            status.innerText = "Enviando...";
+            
+            try {
+                // 1. Salvar arquivo no Storage
+                const storageRef = ref(storage, 'albuns/' + file.name + '-' + Date.now());
+                await uploadBytes(storageRef, file);
+                const downloadURL = await getDownloadURL(storageRef);
+
+                // 2. Salvar link no Banco de Dados
+                await addDoc(collection(db, "fotos"), {
+                    url: downloadURL,
+                    dataUpload: new Date()
+                });
+
+                status.innerText = "Sucesso! Recarregando...";
+                fileInput.value = ''; // Limpa input
+                loadPhotos(); // Atualiza a galeria na hora
+            } catch (error) {
+                console.error("Erro:", error);
+                status.innerText = "Erro ao enviar :(";
+            }
+        }
     </script>
 </body>
 </html>
